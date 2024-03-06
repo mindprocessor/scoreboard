@@ -54,10 +54,10 @@
         </div>
         <br>
         <div class="adjust-controllers">
-            <button>-</button> min <button>+</button>
+            <button onclick="deductMinuteTimer()">-</button> min <button onclick="addMinuteTimer()">+</button>
         </div>
         <div class="adjust-controllers">
-            <button>-</button> sec <button>+</button>
+            <button onclick="deductSecondTimer()">-</button> sec <button onclick="addSecondTimer()">+</button>
         </div>
 
         <br><br>
@@ -80,7 +80,10 @@
             <div id="shot-clock" class="fs-100">
                 24
             </div>
-            <button>start/reset</button>
+            <div class="adjust-controllers">
+                <button onclick="startShotClock()">start/reset</button>
+                <button onclick="pauseShotClock()">pause</button>
+            </div>
         </div>
     </div>
 
