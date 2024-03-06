@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+
+
+</head>
+    <title>Score Board</title>
+    <link rel="stylesheet" href="design.css"/>
+<body>
+    
+    <div id="section-team-a">
+        <h2>Team A</h2>
+        <br>
+        <div class="team-name">
+            <span id="team-a-name">
+                Name A
+            </span>
+        </div>
+        <br>
+        <div class="p-10">
+            <div class="p-10 border">
+                <h3>SCORE</h3>
+                <span id="team-a-score" class="fs-150">
+                    20
+                </span>
+                <div class="adjust-controllers">
+                    <button class="mr-10">&#10094;</button>
+                    <button class="ml-10">&#10095;</button>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="p-10">
+            <h3>FOULS</h3>
+            <span id="team-a-foul" class="fs-150">
+                0
+            </span>
+            <div class="adjust-controllers">
+                <button class="mr-10">&#10094;</button>
+                <button class="ml-10">&#10095;</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="section-timer">
+        <h2>TIME</h2>
+        <div id="clock-timer">
+            00:00
+        </div>
+        <div class="adjust-controllers">
+            <button onclick="startTimer()">START</button>
+            <button onclick="pauseTimer()">PAUSE</button>
+            <button onclick="resetTimer()">RESET</button>
+        </div>
+        <br>
+        <div class="adjust-controllers">
+            <button>-</button> min <button>+</button>
+        </div>
+        <div class="adjust-controllers">
+            <button>-</button> sec <button>+</button>
+        </div>
+
+        <br><br>
+
+        <div class="section-period p-10">
+            <h1>PERIOD</h1>
+            <div id="period-count">
+                1
+            </div>
+            <div class="adjust-controllers">
+                <button class="mr-10">&#10094;</button>
+                <button class="ml-10">&#10095;</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="section-team-b">
+        <h2>Team B</h2>
+        <div class="team-name">
+            <span id="team-b-name">
+                Name B
+            </span>
+        </div>
+        <br>
+        <div class="p-10">
+            <div class="p-10 border">
+                <h3>SCORE</h3>
+                <span id="team-b-score" class="fs-150">
+                    20
+                </span>
+                <div class="adjust-controllers">
+                    <button class="mr-10">&#10094;</button>
+                    <button class="ml-10">&#10095;</button>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="p-10">
+            <h3>FOULS</h3>
+            <span id="team-b-foul" class="fs-150">
+                0
+            </span>
+            <div class="adjust-controllers">
+                <button class="mr-10">&#10094;</button>
+                <button class="ml-10">&#10095;</button>
+            </div>
+        </div>
+    </div>
+
+<script src="./base.js"></script>
+</body>
+</html>
