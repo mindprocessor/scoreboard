@@ -6,8 +6,22 @@ let timer_paused = true;
 let shot_clock_interval = null;
 let shot_clock_timer = starting_shot_clock;
 
+let period = 1;
+let score_a = 0;
+let score_b = 0;
+
+let foul_a = 0;
+let foul_b = 0;
+
+const period_el = document.getElementById('period-count');
+const score_a_el = document.getElementById('team-a-score');
+const score_b_el = document.getElementById('team-b-score');
+const foul_a_el = document.getElementById('team-a-foul');
+const foul_b_el = document.getElementById('team-b-foul');
+const clock_timer = document.getElementById('clock-timer');
+const shot_clock_el = document.getElementById('shot-clock');
+
 function startCountDown(){
-    const clock_timer = document.getElementById('clock-timer');
     const minutes = Math.floor(timer / 60);
     let seconds = timer % 60;
 
@@ -20,7 +34,6 @@ function startCountDown(){
     clock_timer.innerHTML = `${minutes}:${seconds}`;
 }
 function refreshTimer(){
-    const clock_timer = document.getElementById('clock-timer');
     const minutes = Math.floor(timer / 60);
     let seconds = timer % 60;    
     clock_timer.innerHTML = `${minutes}:${seconds}`;
@@ -29,7 +42,6 @@ function refreshTimer(){
 function resetTimer(){
     if(timer_paused){
         timer = starting_minute * 60;
-        const clock_timer = document.getElementById('clock-timer');
         const minutes = Math.floor(timer / 60);
         let seconds = timer % 60;
         clock_timer.innerHTML = `${minutes}:${seconds}`;
@@ -71,12 +83,27 @@ function deductSecondTimer(){
 }
 
 
-function addScore(){
+function addScore(team){
+    if(team == 'a'){
+        score_a++;
+        score_a_el.innerHTML = score_a;
+    }
+    if(team == 'b'){
+        score_b++;
+        score_b_el.innerHTML = score_a;
+    }
 
 }
 
-function deductScore(){
-
+function deductScore(team){
+    if(team == 'a'){
+        score_a--;
+        score_a_el.innerHTML = score_a;
+    }
+    if(team == 'b'){
+        score_b--;
+        score_b_el.innerHTML = score_a;
+    }
 }
 
 
@@ -99,9 +126,7 @@ function deductPeriod(){
 
 
 function startShotClockTimer(){
-    const shot_clock_el = document.getElementById('shot-clock');
     shot_clock_el.innerHTML = `${shot_clock_timer}`;
-    
     if(shot_clock_timer <= 0){
         pauseShotClock();
     }else{
@@ -128,6 +153,16 @@ function setTimer(){
     startCountDown();
 }
 
+function setDefaults(){
+    score_a_el.innerHTML = score_a;
+    score_b_el.innerHTML = score_b;
+
+    foul_a_el.innerHTML = foul_a;
+    foul_b_el.innerHTML = foul_b;
+
+    period_el.innerHTML = period;
+}
+
 //for keybinding
 function handleKeyPress(event){
     if(event.code == 'Space'){
@@ -146,6 +181,7 @@ function handleKeyPress(event){
 }
 
 setTimer();
+setDefaults();
 
 window.addEventListener('keydown', handleKeyPress, false);
 window.addEventListener('mousedown', function(e){
