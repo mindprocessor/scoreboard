@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron/main')
+const { app, BrowserWindow, Menu } = require('electron/main')
 const path = require('node:path')
 
 function createWindow () {
@@ -6,6 +6,8 @@ function createWindow () {
     minWidth: 1280,
     minHeight: 800,
   });
+
+  //Menu.setApplicationMenu(null);
 
   win.loadFile(path.join(__dirname, 'index.html'));
 }

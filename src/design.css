@@ -3,6 +3,7 @@ body{padding:0px; background-color: black; color: #fff; font-family:'calibri';}
 button{border:1px solid #fff; background-color: black; color: #eee;}
 button:active{background-color: #eee; color: black;}
 
+
 .p-10{padding:10px;}
 .border{border: 1px solid #eee;}
 .fs-150{font-size: 150px;}
@@ -11,6 +12,10 @@ button:active{background-color: #eee; color: black;}
 
 .ml-10{margin-left: 10px;}
 .mr-10{margin-right: 10px;}
+
+.lh-1{line-height: 1em;}
+
+.m-0{margin: 0px;}
 
 
 #section-team-a{

@@ -90,7 +90,7 @@ function addScore(team){
     }
     if(team == 'b'){
         score_b++;
-        score_b_el.innerHTML = score_a;
+        score_b_el.innerHTML = score_b;
     }
 
 }
@@ -107,21 +107,44 @@ function deductScore(team){
 }
 
 
-function addFoul(){
+function addFoul(team){
+    if(team == 'a'){
+        foul_a++;
+        foul_a_el.innerHTML = foul_a;
+    }
+    if(team == 'b'){
+        foul_b++;
+        foul_b_el.innerHTML = foul_b;
+    }
 
 }
 
-function deductFoul(){
-
+function deductFoul(team){
+    if(team == 'a'){
+        if(foul_a > 0){
+            foul_a--;
+            foul_a_el.innerHTML = foul_a;
+        }
+    }
+    if(team == 'b'){
+        if(foul_b > 0){
+            foul_b--;
+            foul_b_el.innerHTML = foul_b;
+        }
+    }
 }
 
 
 function addPeriod(){
-
+    period++;
+    period_el.innerHTML = period;
 }
 
 function deductPeriod(){
-
+    if(period > 1){
+        period--;
+        period_el.innerHTML = period;
+    }
 }   
 
 
@@ -180,10 +203,15 @@ function handleKeyPress(event){
     }
 }
 
+
+function editTeamA(){
+    alert('haha');
+}
+
 setTimer();
 setDefaults();
 
 window.addEventListener('keydown', handleKeyPress, false);
 window.addEventListener('mousedown', function(e){
-    e.preventDefault();
+    
 }, false);

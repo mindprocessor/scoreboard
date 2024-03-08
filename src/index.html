@@ -10,11 +10,11 @@
     
     <div id="section-team-a">
         <h2>Team A</h2>
-        <br>
         <div class="team-name">
-            <span id="team-a-name">
+            <div id="team-a-name">
                 Name A
-            </span>
+            </div>
+            <button onclick="editTeamA()">edit</button>
         </div>
         <br>
         <div class="p-10">
@@ -32,19 +32,19 @@
         <br>
         <div class="p-10">
             <h3>FOULS</h3>
-            <span id="team-a-foul" class="fs-150">
+            <span id="team-a-foul" class="fs-150 lh-1">
                 0
             </span>
             <div class="adjust-controllers">
-                <button class="mr-10">&#10094;</button>
-                <button class="ml-10">&#10095;</button>
+                <button class="mr-10" onclick="deductFoul('a')">&#10094;</button>
+                <button class="ml-10"onclick="addFoul('a')">&#10095;</button>
             </div>
         </div>
     </div>
 
     <div id="section-timer">
         <h2>TIME</h2>
-        <div id="clock-timer">
+        <div id="clock-timer" class="lh-1">
             00:00
         </div>
         <div class="adjust-controllers">
@@ -64,20 +64,20 @@
 
         <div class="section-period p-10">
             <h1>PERIOD</h1>
-            <div id="period-count" class="fs-100">
+            <div id="period-count" class="fs-100 lh-1">
                 1
             </div>
             <div class="adjust-controllers">
-                <button class="mr-10">&#10094;</button>
-                <button class="ml-10">&#10095;</button>
+                <button class="mr-10" onclick="deductPeriod()">&#10094;</button>
+                <button class="ml-10" onclick="addPeriod()">&#10095;</button>
             </div>
         </div>
 
         <br>
 
         <div>
-            <h1>SHOT CLOCK</h1>
-            <div id="shot-clock" class="fs-100">
+            <h1 class="m-0">SHOT CLOCK</h1>
+            <div id="shot-clock" class="fs-100 lh-1">
                 24
             </div>
             <div class="adjust-controllers">
@@ -85,14 +85,16 @@
                 <button onclick="pauseShotClock()">pause</button>
             </div>
         </div>
+        <input type="text">
     </div>
 
     <div id="section-team-b">
         <h2>Team B</h2>
         <div class="team-name">
-            <span id="team-b-name">
+            <div id="team-b-name">
                 Name B
-            </span>
+            </div>
+            <button>edit</button>
         </div>
         <br>
         <div class="p-10">
@@ -102,23 +104,24 @@
                     20
                 </span>
                 <div class="adjust-controllers">
-                    <button class="mr-10">&#10094;</button>
-                    <button class="ml-10">&#10095;</button>
+                    <button class="mr-10" onclick="deductScore('b')">&#10094;</button>
+                    <button class="ml-10" onclick="addScore('b')">&#10095;</button>
                 </div>
             </div>
         </div>
         <br>
         <div class="p-10">
             <h3>FOULS</h3>
-            <span id="team-b-foul" class="fs-150">
+            <span id="team-b-foul" class="fs-150 lh-1">
                 0
             </span>
             <div class="adjust-controllers">
-                <button class="mr-10">&#10094;</button>
-                <button class="ml-10">&#10095;</button>
+                <button class="mr-10" onclick="deductFoul('b')">&#10094;</button>
+                <button class="ml-10" onclick="addFoul('b')">&#10095;</button>
             </div>
         </div>
     </div>
+
 
 <script src="./base.js"></script>
 </body>
