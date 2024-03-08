@@ -6,6 +6,8 @@ let timer_paused = true;
 let shot_clock_interval = null;
 let shot_clock_timer = starting_shot_clock;
 
+let isHotKeyActive = false;
+
 let period = 1;
 let score_a = 0;
 let score_b = 0;
@@ -189,29 +191,51 @@ function setDefaults(){
 //for keybinding
 function handleKeyPress(event){
     if(event.code == 'Space'){
-        startShotClock();
+        if(isHotKeyActive == true){
+            startShotClock();
+        }
     }
     if(event.code == 'KeyB'){
-        pauseShotClock();
+        if(isHotKeyActive == true){
+            pauseShotClock();
+        }
     }
 
     if(event.code == 'KeyS'){
-        startTimer();
+        if(isHotKeyActive == true){
+            startTimer();
+        }
     }
     if(event.code == 'KeyP'){
-        pauseTimer();
+        if(isHotKeyActive == true){
+            pauseTimer();
+        }
     }
 }
 
 
-function editTeamA(){
-    alert('haha');
+function hotKeyIndicator(){
+    const hotkey_el = document.getElementById('hotkey-indicator');
+    if(isHotKeyActive == true){
+        hotkey_el.innerHTML = 'HOT KEY: ACTIVE';
+    }else{
+        hotkey_el.innerHTML = 'HOT KEY: DISABLED';
+    }
 }
+
+function toggleHotKey(){
+    if(isHotKeyActive == true){
+        isHotKeyActive = false;
+    }else{
+        isHotKeyActive = true;
+    }
+    hotKeyIndicator();
+}
+
 
 setTimer();
 setDefaults();
+hotKeyIndicator();
 
 window.addEventListener('keydown', handleKeyPress, false);
-window.addEventListener('mousedown', function(e){
-    
-}, false);
+

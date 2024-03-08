@@ -11,10 +11,9 @@
     <div id="section-team-a">
         <h2>Team A</h2>
         <div class="team-name">
-            <div id="team-a-name">
+            <div id="team-a-name" contenteditable="true">
                 Name A
             </div>
-            <button onclick="editTeamA()">edit</button>
         </div>
         <br>
         <div class="p-10">
@@ -24,8 +23,8 @@
                     20
                 </span>
                 <div class="adjust-controllers">
-                    <button class="mr-10" onclick="deductScore('a')">&#10094;</button>
-                    <button class="ml-10" onclick="addScore('a')">&#10095;</button>
+                    <button class="mr-10" onmousedown="event.preventDefault()" onclick="deductScore('a')">&#10094;</button>
+                    <button class="ml-10" onmousedown="event.preventDefault()" onclick="addScore('a')">&#10095;</button>
                 </div>
             </div>
         </div>
@@ -36,8 +35,8 @@
                 0
             </span>
             <div class="adjust-controllers">
-                <button class="mr-10" onclick="deductFoul('a')">&#10094;</button>
-                <button class="ml-10"onclick="addFoul('a')">&#10095;</button>
+                <button class="mr-10" onmousedown="event.preventDefault()" onclick="deductFoul('a')">&#10094;</button>
+                <button class="ml-10" onmousedown="event.preventDefault()" onclick="addFoul('a')">&#10095;</button>
             </div>
         </div>
     </div>
@@ -48,16 +47,16 @@
             00:00
         </div>
         <div class="adjust-controllers">
-            <button onclick="startTimer()">START</button>
-            <button onclick="pauseTimer()">PAUSE</button>
-            <button onclick="resetTimer()">RESET</button>
+            <button onclick="startTimer()" onmousedown="event.preventDefault()">START</button>
+            <button onclick="pauseTimer()" onmousedown="event.preventDefault()">PAUSE</button>
+            <button onclick="resetTimer()" onmousedown="event.preventDefault()">RESET</button>
         </div>
         <br>
         <div class="adjust-controllers">
-            <button onclick="deductMinuteTimer()">-</button> min <button onclick="addMinuteTimer()">+</button>
+            <button onclick="deductMinuteTimer()" onmousedown="event.preventDefault()">-</button> min <button onclick="addMinuteTimer()" onmousedown="event.preventDefault()">+</button>
         </div>
         <div class="adjust-controllers">
-            <button onclick="deductSecondTimer()">-</button> sec <button onclick="addSecondTimer()">+</button>
+            <button onclick="deductSecondTimer()" onmousedown="event.preventDefault()">-</button> sec <button onclick="addSecondTimer()" onmousedown="event.preventDefault()">+</button>
         </div>
 
         <br><br>
@@ -68,8 +67,8 @@
                 1
             </div>
             <div class="adjust-controllers">
-                <button class="mr-10" onclick="deductPeriod()">&#10094;</button>
-                <button class="ml-10" onclick="addPeriod()">&#10095;</button>
+                <button class="mr-10" onmousedown="event.preventDefault()" onclick="deductPeriod()">&#10094;</button>
+                <button class="ml-10" onmousedown="event.preventDefault()"  onclick="addPeriod()">&#10095;</button>
             </div>
         </div>
 
@@ -81,20 +80,18 @@
                 24
             </div>
             <div class="adjust-controllers">
-                <button onclick="startShotClock()">start/reset</button>
-                <button onclick="pauseShotClock()">pause</button>
+                <button onmousedown="event.preventDefault()" onclick="startShotClock()">start/reset</button>
+                <button onmousedown="event.preventDefault()" onclick="pauseShotClock()">pause</button>
             </div>
         </div>
-        <input type="text">
     </div>
 
     <div id="section-team-b">
         <h2>Team B</h2>
         <div class="team-name">
-            <div id="team-b-name">
+            <div id="team-b-name" contenteditable="true">
                 Name B
             </div>
-            <button>edit</button>
         </div>
         <br>
         <div class="p-10">
@@ -104,8 +101,8 @@
                     20
                 </span>
                 <div class="adjust-controllers">
-                    <button class="mr-10" onclick="deductScore('b')">&#10094;</button>
-                    <button class="ml-10" onclick="addScore('b')">&#10095;</button>
+                    <button class="mr-10" onmousedown="event.preventDefault()" onclick="deductScore('b')">&#10094;</button>
+                    <button class="ml-10" onmousedown="event.preventDefault()" onclick="addScore('b')">&#10095;</button>
                 </div>
             </div>
         </div>
@@ -116,11 +113,16 @@
                 0
             </span>
             <div class="adjust-controllers">
-                <button class="mr-10" onclick="deductFoul('b')">&#10094;</button>
-                <button class="ml-10" onclick="addFoul('b')">&#10095;</button>
+                <button class="mr-10" onmousedown="event.preventDefault()" onclick="deductFoul('b')">&#10094;</button>
+                <button class="ml-10" onmousedown="event.preventDefault()" onclick="addFoul('b')">&#10095;</button>
             </div>
         </div>
     </div>
+
+    <div id="hotkey-indicator">
+
+    </div>
+    <button id="btn-hotkey-toggle" onmousedown="event.preventDefault()" onclick="toggleHotKey()">enable/disable</button>
 
 
 <script src="./base.js"></script>

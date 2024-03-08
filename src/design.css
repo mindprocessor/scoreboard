@@ -43,3 +43,7 @@ button:active{background-color: #eee; color: black;}
 
 .team-name{font-size:50px;}
 .adjust-controllers{margin-top: 10px;}
+
+
+#hotkey-indicator{display: block; position: absolute; left:110px; bottom:0px; padding:10px;}
+#btn-hotkey-toggle{display:block; position: absolute; left:10px; bottom: 10px;}
