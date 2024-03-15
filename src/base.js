@@ -1,3 +1,5 @@
+const { trim } = require("jquery");
+
 const starting_minute = 5;
 const starting_shot_clock = 24;
 let timer = starting_minute * 60;
@@ -190,24 +192,18 @@ function setDefaults(){
 
 //for keybinding
 function handleKeyPress(event){
-    if(event.code == 'Space'){
-        if(isHotKeyActive == true){
+    if(isHotKeyActive == true){
+        if(event.code == 'Space'){
             startShotClock();
         }
-    }
-    if(event.code == 'KeyB'){
-        if(isHotKeyActive == true){
+        if(event.code == 'KeyB'){
             pauseShotClock();
         }
-    }
 
-    if(event.code == 'KeyS'){
-        if(isHotKeyActive == true){
+        if(event.code == 'KeyS'){
             startTimer();
         }
-    }
-    if(event.code == 'KeyP'){
-        if(isHotKeyActive == true){
+        if(event.code == 'KeyP'){
             pauseTimer();
         }
     }
