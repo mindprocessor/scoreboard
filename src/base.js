@@ -24,7 +24,7 @@ const clock_timer = document.getElementById('clock-timer');
 const shot_clock_el = document.getElementById('shot-clock');
 
 function startCountDown(){
-    const minutes = Math.floor(timer / 60);
+    let minutes = Math.floor(timer / 60);
     let seconds = timer % 60;
 
     if(timer <= 0){
@@ -32,12 +32,27 @@ function startCountDown(){
     }else{
         timer--;
     }
+
+    if(minutes < 10){
+        minutes = `0${minutes}`;
+    }
+    if(seconds < 10){
+        seconds = `0${seconds}`;
+    }
     
     clock_timer.innerHTML = `${minutes}:${seconds}`;
 }
 function refreshTimer(){
-    const minutes = Math.floor(timer / 60);
-    let seconds = timer % 60;    
+    let minutes = Math.floor(timer / 60);
+    let seconds = timer % 60;   
+
+    if(minutes < 10){
+        minutes = `0${minutes}`;
+    }
+    if(seconds < 10){
+        seconds = `0${seconds}`;
+    }
+
     clock_timer.innerHTML = `${minutes}:${seconds}`;
 }
 
@@ -72,6 +87,9 @@ function addMinuteTimer(){
 function deductMinuteTimer(){
     if(timer > 0){
         timer -=60;
+        if(timer < 0){
+            timer = 0;
+        }
         refreshTimer();
     }
 }
@@ -83,6 +101,9 @@ function addSecondTimer(){
 
 function deductSecondTimer(){
     timer--;
+    if(timer < 0){
+        timer = 0;
+    }
     refreshTimer();
 }
 
@@ -91,10 +112,12 @@ function addScore(team){
     if(team === 'a'){
         score_a++;
         score_a_el.innerHTML = score_a;
+        write_team_a_score(score_a);
     }
     if(team === 'b'){
         score_b++;
         score_b_el.innerHTML = score_b;
+        write_team_b_score(score_b);
     }
 
 }

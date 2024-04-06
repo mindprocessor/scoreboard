@@ -5,6 +5,10 @@ function createWindow () {
   const win = new BrowserWindow({
     minWidth: 1280,
     minHeight: 800,
+    webPreferences: {
+            nodeIntegration: true,
+            contextIsolation: false
+        }
   });
 
   //Menu.setApplicationMenu(null);
