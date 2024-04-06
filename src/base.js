@@ -1,5 +1,3 @@
-const { trim } = require("jquery");
-
 const starting_minute = 5;
 const starting_shot_clock = 24;
 let timer = starting_minute * 60;
