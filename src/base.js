@@ -70,8 +70,10 @@ function addMinuteTimer(){
 }
 
 function deductMinuteTimer(){
-    timer -=60;
-    refreshTimer();
+    if(timer > 0){
+        timer -=60;
+        refreshTimer();
+    }
 }
 
 function addSecondTimer(){
@@ -86,11 +88,11 @@ function deductSecondTimer(){
 
 
 function addScore(team){
-    if(team == 'a'){
+    if(team === 'a'){
         score_a++;
         score_a_el.innerHTML = score_a;
     }
-    if(team == 'b'){
+    if(team === 'b'){
         score_b++;
         score_b_el.innerHTML = score_b;
     }
@@ -98,23 +100,23 @@ function addScore(team){
 }
 
 function deductScore(team){
-    if(team == 'a'){
+    if(team === 'a'){
         score_a--;
         score_a_el.innerHTML = score_a;
     }
-    if(team == 'b'){
+    if(team === 'b'){
         score_b--;
-        score_b_el.innerHTML = score_a;
+        score_b_el.innerHTML = score_b;
     }
 }
 
 
 function addFoul(team){
-    if(team == 'a'){
+    if(team === 'a'){
         foul_a++;
         foul_a_el.innerHTML = foul_a;
     }
-    if(team == 'b'){
+    if(team === 'b'){
         foul_b++;
         foul_b_el.innerHTML = foul_b;
     }
@@ -122,13 +124,13 @@ function addFoul(team){
 }
 
 function deductFoul(team){
-    if(team == 'a'){
+    if(team === 'a'){
         if(foul_a > 0){
             foul_a--;
             foul_a_el.innerHTML = foul_a;
         }
     }
-    if(team == 'b'){
+    if(team === 'b'){
         if(foul_b > 0){
             foul_b--;
             foul_b_el.innerHTML = foul_b;
