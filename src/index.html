@@ -43,8 +43,10 @@
     <div id="section-timer">
         <h2>TIME</h2>
         <div>
-            <input type="number" step="1" min="0" id="time-limit" value="5" style="width:50px;background-color:#000;border:1px solid #fff;"/>
+            <div>Time Limit</div>
+            <input type="number" step="1" min="0" id="time-limit" value="10" style="width:50px;" onchange="updateTimeLimit(this.value)" onkeyup="updateTimeLimit(this.value)"/>
         </div>
+        <br/>
         <div id="clock-timer" class="lh-1">
             00:00
         </div>
@@ -127,7 +129,7 @@
     <button id="btn-hotkey-toggle" onmousedown="event.preventDefault()" onclick="toggleHotKey()">enable/disable</button>
 
 
-<script src="./base.js"></script>
 <script src="./funcs.js"></script> 
+<script src="./base.js"></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-const starting_minute = 5;
+let starting_minute = read_time_limit();
 const starting_shot_clock = 24;
 let timer = starting_minute * 60;
 let timer_interval = null;
@@ -58,9 +58,18 @@ function refreshTimer(){
 
 function resetTimer(){
     if(timer_paused){
+        starting_minute = read_time_limit();
         timer = starting_minute * 60;
-        const minutes = Math.floor(timer / 60);
+        let minutes = Math.floor(timer / 60);
         let seconds = timer % 60;
+
+        if(minutes < 10){
+            minutes = `0${minutes}`;
+        }
+        if(seconds < 10){
+            seconds = `0${seconds}`;
+        }
+        
         clock_timer.innerHTML = `${minutes}:${seconds}`;
         pauseTimer();
     }
@@ -126,10 +135,12 @@ function deductScore(team){
     if(team === 'a'){
         score_a--;
         score_a_el.innerHTML = score_a;
+        write_team_a_score(score_a);
     }
     if(team === 'b'){
         score_b--;
         score_b_el.innerHTML = score_b;
+        write_team_a_score(score_b);
     }
 }
 
@@ -138,10 +149,12 @@ function addFoul(team){
     if(team === 'a'){
         foul_a++;
         foul_a_el.innerHTML = foul_a;
+        write_team_a_foul(foul_a);
     }
     if(team === 'b'){
         foul_b++;
         foul_b_el.innerHTML = foul_b;
+        write_team_b_foul(foul_b);
     }
 
 }
@@ -151,12 +164,14 @@ function deductFoul(team){
         if(foul_a > 0){
             foul_a--;
             foul_a_el.innerHTML = foul_a;
+            write_team_a_foul(foul_a);
         }
     }
     if(team === 'b'){
         if(foul_b > 0){
             foul_b--;
             foul_b_el.innerHTML = foul_b;
+            write_team_b_foul(foul_b);
         }
     }
 }
@@ -233,6 +248,11 @@ function handleKeyPress(event){
 }
 
 
+function updateTimeLimit(val){
+    write_time_limit(val);
+}
+
+
 function hotKeyIndicator(){
     const hotkey_el = document.getElementById('hotkey-indicator');
     if(isHotKeyActive == true){
@@ -252,11 +272,26 @@ function toggleHotKey(){
 }
 
 
+function setValues(){
+    starting_minute = read_time_limit();
+    
+    score_a = read_team_a_score();
+    score_b = read_team_b_score();
+
+    foul_a = read_team_a_foul();
+    foul_b = read_team_b_foul();
+
+    document.getElementById('team-a-name').innerHTML = read_team_a();
+    document.getElementById('team-b-name').innerHTML = read_team_b();
+
+    document.getElementById('time-limit').value = read_time_limit();
+}
+
+setValues();
+
 setTimer();
 setDefaults();
 hotKeyIndicator();
 
-
-document.getElementById('time-limit')[0].focus()
 window.addEventListener('keydown', handleKeyPress, false);
 
