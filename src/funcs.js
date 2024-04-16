@@ -30,3 +30,7 @@ function write_team_a_foul(foul){
 function write_team_b_foul(foul){
     fs.writeFile('./team_b_foul.txt', foul, err=>{});
 }
+
+function write_time_limit(val){
+    fs.writeFile('./time_limit.txt', err=>{});
+}

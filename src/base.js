@@ -256,5 +256,7 @@ setTimer();
 setDefaults();
 hotKeyIndicator();
 
+
+document.getElementById('time-limit')[0].focus()
 window.addEventListener('keydown', handleKeyPress, false);
 
