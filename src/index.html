@@ -17,26 +17,43 @@
         <br>
         <div class="p-10">
             <div class="p-10 border">
-                <h3>SCORE</h3>
-                <span id="team-a-score" class="fs-150">
-                    20
-                </span>
-                <div class="adjust-controllers">
-                    <button class="mr-10" onmousedown="event.preventDefault()" onclick="deductScore('a')">&#10094;</button>
-                    <button class="ml-10" onmousedown="event.preventDefault()" onclick="addScore('a')">&#10095;</button>
-                </div>
+                <!--score-->
+                <table style="width:100%">
+                    <tr>
+                        <td>
+                             <button class="btn-score" onmousedown="event.preventDefault()" onclick="deductScore('a')">&#10094;</button>
+                        </td>
+                        <td>
+                            <span id="team-a-score" class="fs-200">
+                                20
+                            </span>
+                        </td>
+                        <td>
+                            <button class="btn-score" onmousedown="event.preventDefault()" onclick="addScore('a')">&#10095;</button>
+                        </td>
+                    </tr>
+                </table>
+                <button onclick="resetScore('a')">RESET</button>
             </div>
         </div>
         <br>
         <div class="p-10">
             <h3>FOULS</h3>
-            <span id="team-a-foul" class="fs-150 lh-1">
-                0
-            </span>
-            <div class="adjust-controllers">
-                <button class="mr-10" onmousedown="event.preventDefault()" onclick="deductFoul('a')">&#10094;</button>
-                <button class="ml-10" onmousedown="event.preventDefault()" onclick="addFoul('a')">&#10095;</button>
-            </div>
+            <table style="width:100%;">
+                <tr>
+                    <td>
+                        <button class="btn-foul" onmousedown="event.preventDefault()" onclick="deductFoul('a')">&#10094;</button>
+                    </td>
+                    <td>
+                        <span id="team-a-foul" class="fs-150 lh-1">
+                            0
+                        </span>
+                    </td>
+                    <td>    
+                        <button class="btn-foul" onmousedown="event.preventDefault()" onclick="addFoul('a')">&#10095;</button>
+                    </td>
+                </tr>
+            </table>
         </div>
     </div>
 
@@ -47,47 +64,68 @@
             <input type="number" step="1" min="0" id="time-limit" value="10" style="width:50px;" onchange="updateTimeLimit(this.value)" onkeyup="updateTimeLimit(this.value)"/>
         </div>
         <br/>
-        <div id="clock-timer" class="lh-1">
-            00:00
-        </div>
+        <table style="margin:0px auto;">
+            <tr>
+                <td>
+                    <button onclick="addMinuteTimer()" onmousedown="event.preventDefault()">+</button><br>
+                    min<br>
+                    <button onclick="deductMinuteTimer()" onmousedown="event.preventDefault()">-</button>
+                </td>
+                <td>
+                    <div id="clock-timer" class="lh-1">
+                        00:00
+                    </div>
+                </td>
+                <td>
+                    <button onclick="addSecondTimer()" onmousedown="event.preventDefault()">+</button><br>
+                    sec<br>
+                    <button onclick="deductSecondTimer()" onmousedown="event.preventDefault()">-</button>
+                </td>
+            </tr>
+        </table>
         <div class="adjust-controllers">
-            <button onclick="startTimer()" onmousedown="event.preventDefault()">START</button>
-            <button onclick="pauseTimer()" onmousedown="event.preventDefault()">PAUSE</button>
-            <button onclick="resetTimer()" onmousedown="event.preventDefault()">RESET</button>
-        </div>
-        <br>
-        <div class="adjust-controllers">
-            <button onclick="deductMinuteTimer()" onmousedown="event.preventDefault()">-</button> min <button onclick="addMinuteTimer()" onmousedown="event.preventDefault()">+</button>
-        </div>
-        <div class="adjust-controllers">
-            <button onclick="deductSecondTimer()" onmousedown="event.preventDefault()">-</button> sec <button onclick="addSecondTimer()" onmousedown="event.preventDefault()">+</button>
-        </div>
-
-        <br><br>
-
-        <div class="section-period p-10">
-            <h1>PERIOD</h1>
-            <div id="period-count" class="fs-100 lh-1">
-                1
-            </div>
-            <div class="adjust-controllers">
-                <button class="mr-10" onmousedown="event.preventDefault()" onclick="deductPeriod()">&#10094;</button>
-                <button class="ml-10" onmousedown="event.preventDefault()"  onclick="addPeriod()">&#10095;</button>
-            </div>
+            <button class="btn-bg" onclick="startTimer()" onmousedown="event.preventDefault()">START</button>
+            <button class="btn-bg" onclick="pauseTimer()" onmousedown="event.preventDefault()">PAUSE</button>
+            <button class="btn-bg" onclick="resetTimer()" onmousedown="event.preventDefault()">RESET</button>
         </div>
 
         <br>
-
+        <br>
+        
         <div>
-            <h1 class="m-0">SHOT CLOCK</h1>
-            <div id="shot-clock" class="fs-100 lh-1">
+            <h3 class="m-0">SHOT CLOCK</h3>
+            <div id="shot-clock" class="fs-200 lh-1">
                 24
             </div>
             <div class="adjust-controllers">
-                <button onmousedown="event.preventDefault()" onclick="startShotClock()">start/reset</button>
-                <button onmousedown="event.preventDefault()" onclick="pauseShotClock()">pause</button>
+                <button class="btn-bg" onmousedown="event.preventDefault()" onclick="startShotClock()">START/RESET</button>
+                <button class="btn-bg" onmousedown="event.preventDefault()" onclick="pauseShotClock()">PAUSE</button>
+                <button class="btn-bg" onmousedown="event.preventDefault()" onclick="continueShotClock()">CONTINUE</button>
             </div>
         </div>
+        
+        <br>
+
+        <div class="section-period p-10">
+            <h3>PERIOD</h3>
+            <table style="width:40%; margin:0px auto;">
+                <tr>
+                    <td>
+                        <button class="btn-period" onmousedown="event.preventDefault()" onclick="deductPeriod()">&#10094;</button>
+                    </td>
+                    <td>
+                        <div id="period-count" class="fs-80 lh-1">
+                            1
+                        </div>
+                    </td>
+                    <td>
+                        <button class="btn-period" onmousedown="event.preventDefault()"  onclick="addPeriod()">&#10095;</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        
     </div>
 
     <div id="section-team-b">
@@ -100,33 +138,51 @@
         <br>
         <div class="p-10">
             <div class="p-10 border">
-                <h3>SCORE</h3>
-                <span id="team-b-score" class="fs-150">
-                    20
-                </span>
-                <div class="adjust-controllers">
-                    <button class="mr-10" onmousedown="event.preventDefault()" onclick="deductScore('b')">&#10094;</button>
-                    <button class="ml-10" onmousedown="event.preventDefault()" onclick="addScore('b')">&#10095;</button>
-                </div>
+                <!--score-->
+                <table style="width:100%">
+                    <tr>
+                        <td>
+                            <button class="btn-score" onmousedown="event.preventDefault()" onclick="deductScore('b')">&#10094;</button>
+                        </td>
+                        <td>
+                            <span id="team-b-score" class="fs-200">
+                                20
+                            </span>
+                        </td>
+                        <td>
+                            <button class="btn-score" onmousedown="event.preventDefault()" onclick="addScore('b')">&#10095;</button>
+                        </td>
+                    </tr>
+                </table>
+                <button onclick="resetScore('b')">RESET</button>
             </div>
         </div>
         <br>
         <div class="p-10">
             <h3>FOULS</h3>
-            <span id="team-b-foul" class="fs-150 lh-1">
-                0
-            </span>
-            <div class="adjust-controllers">
-                <button class="mr-10" onmousedown="event.preventDefault()" onclick="deductFoul('b')">&#10094;</button>
-                <button class="ml-10" onmousedown="event.preventDefault()" onclick="addFoul('b')">&#10095;</button>
-            </div>
+            <table style="width:100%">
+                <tr>
+                    <td>
+                        <button class="btn-foul" onmousedown="event.preventDefault()" onclick="deductFoul('b')">&#10094;</button>
+                    </td>
+                    <td>
+                        <span id="team-b-foul" class="fs-150 lh-1">
+                            0
+                        </span>
+                    </td>
+                    <td>
+                        <button class="btn-foul" onmousedown="event.preventDefault()" onclick="addFoul('b')">&#10095;</button>
+                    </td>
+                </tr>
+            </table>
         </div>
     </div>
 
-    <div id="hotkey-indicator">
-
+    <div id="d-footer">
+        <button id="btn-hotkey-toggle" onmousedown="event.preventDefault()" onclick="toggleHotKey()">enable/disable</button>
+        <span id="hotkey-indicator"></span>
+        <span id="hotkey-label"></span>
     </div>
-    <button id="btn-hotkey-toggle" onmousedown="event.preventDefault()" onclick="toggleHotKey()">enable/disable</button>
 
 
 <script src="./funcs.js"></script> 

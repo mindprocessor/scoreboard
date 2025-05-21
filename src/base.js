@@ -140,7 +140,20 @@ function deductScore(team){
     if(team === 'b'){
         score_b--;
         score_b_el.innerHTML = score_b;
-        write_team_a_score(score_b);
+        write_team_b_score(score_b);
+    }
+}
+
+function resetScore(team){
+    if(team === 'a'){
+        score_a = 0;
+        score_a_el.innerHTML = score_a;
+        write_team_a_score(score_a);
+    }
+    if(team === 'b'){
+        score_b = 0;
+        score_b_el.innerHTML = score_b;
+        write_team_b_score(score_b);
     }
 }
 
@@ -211,6 +224,12 @@ function pauseShotClock(){
     shot_clock_interval = null;
 }
 
+function continueShotClock(){
+    if(shot_clock_interval == null){
+        shot_clock_interval = setInterval(startShotClockTimer, 1000);
+    }
+}
+
 
 
 // on init
@@ -237,8 +256,11 @@ function handleKeyPress(event){
         if(event.code == 'KeyB'){
             pauseShotClock();
         }
+        if(event.code == 'KeyC'){
+            continueShotClock();
+        }
 
-        if(event.code == 'KeyS'){
+        if(event.code == 'Enter'){
             startTimer();
         }
         if(event.code == 'KeyP'){
@@ -255,10 +277,13 @@ function updateTimeLimit(val){
 
 function hotKeyIndicator(){
     const hotkey_el = document.getElementById('hotkey-indicator');
+    const hotkey_label_el = document.getElementById('hotkey-label');
     if(isHotKeyActive == true){
         hotkey_el.innerHTML = 'HOT KEY: ACTIVE';
+        hotkey_label_el.innerHTML = '| ENTER - Start Timer | P - Pause Timer | SpaceBar - Start/Reset Shot clock | B - Pause shot clock | C - Continue shot clock |';
     }else{
         hotkey_el.innerHTML = 'HOT KEY: DISABLED';
+        hotkey_label_el.innerHTML = '';
     }
 }
 

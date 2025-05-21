@@ -1,11 +1,15 @@
 body{padding:0px; background-color: black; color: #fff; font-family:'calibri';}
 
-button{border:1px solid #fff; background-color: black; color: #eee;}
+button{border:1px solid #fff; background-color: #000000; color: #eee;}
 button:active{background-color: #eee; color: black;}
+button:hover{cursor:pointer;}
+
+.btn-bg{font-size:30px;padding:2px 5px;}
 
 
 .p-10{padding:10px;}
 .border{border: 1px solid #eee;}
+.fs-200{font-size: 200px;}
 .fs-150{font-size: 150px;}
 .fs-100{font-size: 100px;}
 .fs-80{font-size: 80px;}
@@ -45,5 +49,13 @@ button:active{background-color: #eee; color: black;}
 .adjust-controllers{margin-top: 10px;}
 
 
-#hotkey-indicator{display: block; position: absolute; left:110px; bottom:0px; padding:10px;}
-#btn-hotkey-toggle{display:block; position: absolute; left:10px; bottom: 10px;}
+#d-footer{display:block;width:100%;position:absolute; left:0px; bottom:40px;}
+#hotkey-indicator{padding:10px;}
+#btn-hotkey-toggle{padding:10px;}
+
+
+.btn-score{font-size:70px;border:none;color:#222;}
+
+.btn-foul{font-size:60px;border:none;color:#222;}
+
+.btn-period{font-size:50px;border:none;color:#222;}
