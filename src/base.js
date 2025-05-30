@@ -3,6 +3,9 @@ const starting_shot_clock = 24;
 let timer = starting_minute * 60;
 let timer_interval = null;
 let timer_paused = true;
+let timeout_interval = null;
+let timeout_set = 0;
+let is_timeout = false;
 let shot_clock_interval = null;
 let shot_clock_timer = starting_shot_clock;
 
@@ -231,6 +234,66 @@ function continueShotClock(){
 }
 
 
+//====== 
+
+
+function start_timeout(){
+    const dialog_timeout = document.getElementById('dialog-timeout');
+    let time_set = document.getElementById('timeout-time').value;
+    
+    dialog_timeout.style.display='block';
+
+    timeout_set = time_set * 60;
+
+    is_timeout = true;
+
+    pauseTimer();
+    pauseShotClock();
+
+    if(timeout_interval == null){
+        timeout_interval = setInterval(timeoutStart, 1000);
+    }
+}
+
+function close_timeout(){
+    const dialog_timeout = document.getElementById('dialog-timeout');
+    let timer_display = document.getElementById('timeout-timer');
+    dialog_timeout.style.display='none';
+    clearInterval(timeout_interval);
+    timeout_interval = null;
+    timer_display.innerHTML = "00:00";
+    is_timeout = false;
+}
+
+
+function timeoutPause(){
+    clearInterval(timeout_interval);
+    timeout_interval = null;
+}
+
+
+function timeoutStart(){
+    let timer_display = document.getElementById('timeout-timer');
+    let minutes = Math.floor(timeout_set / 60);
+    let seconds = timeout_set % 60;
+
+    if(timeout_set <= 0){
+        timeoutPause();
+    }else{
+        timeout_set--;
+    }
+
+    if(minutes < 10){
+        minutes = `0${minutes}`;
+    }
+    if(seconds < 10){
+        seconds = `0${seconds}`;
+    }
+    
+    timer_display.innerHTML = `${minutes}:${seconds}`;
+}
+
+
 
 // on init
 function setTimer(){
@@ -250,21 +313,23 @@ function setDefaults(){
 //for keybinding
 function handleKeyPress(event){
     if(isHotKeyActive == true){
-        if(event.code == 'Space'){
-            startShotClock();
-        }
-        if(event.code == 'KeyB'){
-            pauseShotClock();
-        }
-        if(event.code == 'KeyC'){
-            continueShotClock();
-        }
+        if(is_timeout == false){
+            if(event.code == 'Space'){
+                startShotClock();
+            }
+            if(event.code == 'KeyB'){
+                pauseShotClock();
+            }
+            if(event.code == 'KeyC'){
+                continueShotClock();
+            }
 
-        if(event.code == 'Enter'){
-            startTimer();
-        }
-        if(event.code == 'KeyP'){
-            pauseTimer();
+            if(event.code == 'Enter'){
+                startTimer();
+            }
+            if(event.code == 'KeyP'){
+                pauseTimer();
+            }
         }
     }
 }
