@@ -1,2 +1,2 @@
 # scoreboard
- basketball scoreboard
+ Sports scoreboard, made using electron
